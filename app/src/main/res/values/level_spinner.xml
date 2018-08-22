@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="level_array">
+        <item>Elementry</item>
+        <item>High School</item>
+        <item>Collage</item>
+        <item>University</item>
+    </string-array>
+</resources>

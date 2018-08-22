@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    android:orientation="vertical"
+    >
+
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/search_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabTextColor="#666666"
+        app:tabMode="fixed"
+        app:tabGravity="fill"
+        android:background="@color/colorAccent"
+        android:elevation="10dp"
+        app:tabIndicatorColor="#666666"
+        app:tabIndicatorHeight="2dp" />
+
+    <FrameLayout
+        android:id="@+id/frameSearch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/regularSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Spinner
+                        android:id="@+id/courseSpinner"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+
+                    <Spinner
+                        android:id="@+id/levelSpinner"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/advanceSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <Spinner
+                        android:id="@+id/genderSpinner"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp" />
+
+                    <LinearLayout
+                        android:layout_marginTop="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+
+                        <EditText
+                            android:id="@+id/ageNum"
+                            android:gravity="center"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:ems="10"
+                            android:inputType="number"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/rounded_edittext"
+                            android:hint="12"/>
+
+                        <SeekBar
+                            android:id="@+id/ageSeekBar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:max="80"
+                            android:paddingTop="15dp"
+                            android:progress="12"
+                            android:thumb="@android:drawable/presence_online" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+
+                        <EditText
+                            android:id="@+id/priceNum"
+                            android:gravity="center"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:ems="10"
+                            android:inputType="number"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/rounded_edittext"
+                            android:hint="12"/>
+
+                        <SeekBar
+                            android:id="@+id/priceSeekBar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:max="200"
+                            android:paddingTop="15dp"
+                            android:progress="5"
+                            android:thumb="@android:drawable/presence_online" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+    </FrameLayout>
+
+
+</LinearLayout>

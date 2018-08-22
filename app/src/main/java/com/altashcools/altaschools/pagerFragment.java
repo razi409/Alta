@@ -57,9 +57,6 @@ public  class pagerFragment extends Fragment {
     public Spinner spinner;
     public Spinner spinnerLevel;
 
-    private LayoutInflater mInflator;
-    private boolean selected;
-
     public pagerFragment() {
     }
 
@@ -74,295 +71,298 @@ public  class pagerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(curView, container, false);
 
-
         switch (curView) {
 
             case R.layout.main_fragment:
-
             {
-                final FrameLayout frameLayout = view.findViewById(R.id.frameId);
-
-                frameLayout.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-
-                final RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getBaseContext());
-                recyclerView.setLayoutManager(linearLayoutManager);
-                recyclerView.setHasFixedSize(true);
-
-                //returns data from Database
-                // Initialize Database
-                mPostReference = FirebaseDatabase.getInstance().getReference()
-                        .child("Advertise");
-
-                ValueEventListener postListener = new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-
-                        ArrayList<Post> dataToShow = new ArrayList<>();
-                        for (DataSnapshot dataArray : dataSnapshot.getChildren()) {
-
-                            Post val = new Post();
-                            Post data = dataArray.getValue(Post.class);
-                            val.userId = data.userId;
-                            dataToShow.add(val);
-                        }
-
-                        // specify an adapter (see also next example)
-                        MyAdapter mAdapter = new MyAdapter(dataToShow);
-                        recyclerView.setAdapter(mAdapter);
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                };
-
-                mPostReference.addValueEventListener(postListener);
-
-
-                return view;
+                mainView();
             }
-
             case R.layout.main_search: {
-
-
-
-
-                /*********************
-                 *sets the spinner view
-                 ********************/
-                spinner =  view.findViewById(R.id.courseSpinner);
-                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.course_array, android.R.layout.simple_spinner_item);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-                spinner.setAdapter(
-                        new NothingSelectedSpinnerAdapter(1,adapter, R.layout.row_spinner,getActivity()));
-
-
-                spinnerLevel = view.findViewById(R.id.levelSpinner);
-                ArrayAdapter<CharSequence> adapterLevel = ArrayAdapter.createFromResource(getActivity(), R.array.level_array, android.R.layout.simple_spinner_item);
-                adapterLevel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerLevel.setAdapter(new NothingSelectedSpinnerAdapter(2,adapterLevel, R.layout.row_spinner,getActivity()));
-
-
-                Spinner spinnerGender = view.findViewById(R.id.genderSpinner);
-                ArrayAdapter<CharSequence> adapterGender = ArrayAdapter.createFromResource(getActivity(), R.array.gender_array, android.R.layout.simple_spinner_item);
-                adapterGender.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerGender.setAdapter(new NothingSelectedSpinnerAdapter(3,adapterGender, R.layout.row_spinner,getActivity()));
-
-                /*********************
-                 *sets the Seek bar
-                 ********************/
-
-                ageNum = view.findViewById(R.id.ageNum);
-
-                SeekBar ageSeek = view.findViewById(R.id.ageSeekBar);
-                ageSeek.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
-                ageSeek.getThumb().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
-                ageCurrent = ageSeek.getProgress();
-
-                ageSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                    @Override
-                    public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-                        ageCurrent = progress;
-                        ageNum.setText(Integer.toString(ageCurrent), TextView.BufferType.EDITABLE);
-                    }
-
-                    @Override
-                    public void onStartTrackingTouch(SeekBar seekBar) {
-
-                    }
-
-                    @Override
-                    public void onStopTrackingTouch(SeekBar seekBar) {
-
-                    }
-                });
-
-
-                priceNum = view.findViewById(R.id.priceNum);
-
-                SeekBar priceSeek = view.findViewById(R.id.priceSeekBar);
-                priceSeek.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
-                priceSeek.getThumb().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
-                priceCurrent = priceSeek.getProgress();
-
-                priceSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                    @Override
-                    public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-                        priceCurrent = progress;
-                        priceNum.setText(Integer.toString(priceCurrent), TextView.BufferType.EDITABLE);
-                    }
-
-                    @Override
-                    public void onStartTrackingTouch(SeekBar seekBar) {
-
-                    }
-
-                    @Override
-                    public void onStopTrackingTouch(SeekBar seekBar) {
-
-                    }
-                });
-
-                /*****************
-                 *sets tab layout
-                 ****************/
-                TabLayout tabLayout = view.findViewById(R.id.search_tabs);
-                tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.cardview_light_background));
-
-                TabLayout.Tab firstTab = tabLayout.newTab(); // Create a new Tab names "First Tab"
-                firstTab.setText("List");
-
-                TabLayout.Tab secondTab = tabLayout.newTab(); // Create a new Tab names "First Tab"
-                secondTab.setText("Map");
-
-                tabLayout.addTab(firstTab);
-                tabLayout.addTab(secondTab);
-
-                tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-                    @Override
-                    public void onTabSelected(TabLayout.Tab tab) {
-
-                        switch (tab.getPosition()) {
-
-                            case 0: {
-                                replaceSearchFragment(new FragmentSearchList());
-                                break;
-                            }
-                            case 1: {
-                                replaceSearchFragment(new FragmentSearchMap());
-                                break;
-                            }
-
-                        }
-
-                    }
-
-                    @Override
-                    public void onTabUnselected(TabLayout.Tab tab) {
-
-                    }
-
-                    @Override
-                    public void onTabReselected(TabLayout.Tab tab) {
-
-                    }
-                });
-
-
-                /********************
-                 * Handles click of fab1 till fab4 on Main Activity
-                 *********************/
-
-                MainActivity.fab1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        LinearLayout adLayout = view.findViewById(R.id.advanceSearch);
-                        if(adLayout.getVisibility() == View.VISIBLE)
-                        {
-                            adLayout.setVisibility(View.GONE);
-
-                        }else
-                        {
-                            adLayout.setVisibility(View.VISIBLE);
-
-                        }
-                    }
-                });
-
-                MainActivity.fab2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    int course = spinner.getSelectedItemPosition();
-                    int level = spinnerLevel.getSelectedItemPosition();
-                    //TODO get also advanced values
-
-
-
-                    }
-                });
-
-                return view;
+                mainSearch();
             }
-
             case R.layout.main_login: {
+                mainLogin();}
+        }
+        return view;
+    }
+    private View mainLogin(){
 
 
-                TabLayout tabLayout = view.findViewById(R.id.h_tabs);
-                tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.cardview_light_background));
+        TabLayout tabLayout = view.findViewById(R.id.h_tabs);
+        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.cardview_light_background));
 
-                TabLayout.Tab firstTab = tabLayout.newTab(); // Create a new Tab names "First Tab"
-                firstTab.setText("Teacher");
+        TabLayout.Tab firstTab = tabLayout.newTab(); // Create a new Tab names "First Tab"
+        firstTab.setText("Teacher");
 
-                TabLayout.Tab secondTab = tabLayout.newTab(); // Create a new Tab names "First Tab"
-                secondTab.setText("Student");
-                tabLayout.addTab(firstTab);
-                tabLayout.addTab(secondTab);
+        TabLayout.Tab secondTab = tabLayout.newTab(); // Create a new Tab names "First Tab"
+        secondTab.setText("Student");
+        tabLayout.addTab(firstTab);
+        tabLayout.addTab(secondTab);
 
-                TabLayout.Tab thirdTab = tabLayout.newTab(); // Create a new Tab names "First Tab"
-                thirdTab.setText("Parent");
-                tabLayout.addTab(thirdTab);
+        TabLayout.Tab thirdTab = tabLayout.newTab(); // Create a new Tab names "First Tab"
+        thirdTab.setText("Parent");
+        tabLayout.addTab(thirdTab);
 
-                TabLayout.Tab forthTab = tabLayout.newTab(); // Create a new Tab names "First Tab"
-                forthTab.setText("Profile");
-                tabLayout.addTab(forthTab);
-
-
-                tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-                    @Override
-                    public void onTabSelected(TabLayout.Tab tab) {
-
-                        switch (tab.getPosition()) {
-                            case 0: {
-                                replaceFragment(new FragmentTab());
-                                break;
-                            }
-
-                            case 1: {
-                                replaceFragment(new FragmentTab());
-                                break;
-
-                            }
-
-                            case 2: {
-                                replaceFragment(new FragmentTab());
-                                break;
-
-                            }
-
-                            case 3: {
-                                replaceFragment(new FragmentProfile());
-                                break;
+        TabLayout.Tab forthTab = tabLayout.newTab(); // Create a new Tab names "First Tab"
+        forthTab.setText("Profile");
+        tabLayout.addTab(forthTab);
 
 
-                            }
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
 
-                        }
+                switch (tab.getPosition()) {
+                    case 0: {
+                        replaceFragment(new FragmentTab());
+                        break;
+                    }
+
+                    case 1: {
+                        replaceFragment(new FragmentTab());
+                        break;
 
                     }
 
-                    @Override
-                    public void onTabUnselected(TabLayout.Tab tab) {
+                    case 2: {
+                        replaceFragment(new FragmentTab());
+                        break;
 
                     }
 
-                    @Override
-                    public void onTabReselected(TabLayout.Tab tab) {
+                    case 3: {
+                        replaceFragment(new FragmentProfile());
+                        break;
+
 
                     }
 
-
-                });
-                return view;
+                }
 
             }
 
-        }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+
+
+        });
+        return view;
+
+
+    }
+
+    private View mainSearch(){
+
+
+        /*********************
+         *sets the spinner view
+         ********************/
+        spinner =  view.findViewById(R.id.courseSpinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.course_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner.setAdapter(
+                new NothingSelectedSpinnerAdapter(1,adapter, R.layout.row_spinner,getActivity()));
+
+
+        spinnerLevel = view.findViewById(R.id.levelSpinner);
+        ArrayAdapter<CharSequence> adapterLevel = ArrayAdapter.createFromResource(getActivity(), R.array.level_array, android.R.layout.simple_spinner_item);
+        adapterLevel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerLevel.setAdapter(new NothingSelectedSpinnerAdapter(2,adapterLevel, R.layout.row_spinner,getActivity()));
+
+
+        Spinner spinnerGender = view.findViewById(R.id.genderSpinner);
+        ArrayAdapter<CharSequence> adapterGender = ArrayAdapter.createFromResource(getActivity(), R.array.gender_array, android.R.layout.simple_spinner_item);
+        adapterGender.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerGender.setAdapter(new NothingSelectedSpinnerAdapter(3,adapterGender, R.layout.row_spinner,getActivity()));
+
+        /*********************
+         *sets the Seek bar
+         ********************/
+
+        ageNum = view.findViewById(R.id.ageNum);
+
+        SeekBar ageSeek = view.findViewById(R.id.ageSeekBar);
+        ageSeek.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+        ageSeek.getThumb().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+        ageCurrent = ageSeek.getProgress();
+
+        ageSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+                ageCurrent = progress;
+                ageNum.setText(Integer.toString(ageCurrent), TextView.BufferType.EDITABLE);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+
+        priceNum = view.findViewById(R.id.priceNum);
+
+        SeekBar priceSeek = view.findViewById(R.id.priceSeekBar);
+        priceSeek.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+        priceSeek.getThumb().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+        priceCurrent = priceSeek.getProgress();
+
+        priceSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+                priceCurrent = progress;
+                priceNum.setText(Integer.toString(priceCurrent), TextView.BufferType.EDITABLE);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        /*****************
+         *sets tab layout
+         ****************/
+        TabLayout tabLayout = view.findViewById(R.id.search_tabs);
+        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.cardview_light_background));
+
+        TabLayout.Tab firstTab = tabLayout.newTab(); // Create a new Tab names "First Tab"
+        firstTab.setText("List");
+
+        TabLayout.Tab secondTab = tabLayout.newTab(); // Create a new Tab names "First Tab"
+        secondTab.setText("Map");
+
+        tabLayout.addTab(firstTab);
+        tabLayout.addTab(secondTab);
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+                switch (tab.getPosition()) {
+
+                    case 0: {
+                        replaceSearchFragment(new FragmentSearchList());
+                        break;
+                    }
+                    case 1: {
+                        replaceSearchFragment(new FragmentSearchMap());
+                        break;
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+
+        /********************
+         * Handles click of fab1 till fab4 on Main Activity
+         *********************/
+
+        MainActivity.fab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                LinearLayout adLayout = view.findViewById(R.id.advanceSearch);
+                if(adLayout.getVisibility() == View.VISIBLE)
+                {
+                    adLayout.setVisibility(View.GONE);
+
+                }else
+                {
+                    adLayout.setVisibility(View.VISIBLE);
+
+                }
+            }
+        });
+
+        MainActivity.fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int course = spinner.getSelectedItemPosition();
+                int level = spinnerLevel.getSelectedItemPosition();
+                //TODO get also advanced values
+
+
+
+            }
+        });
+
+        return view;
+
+    }
+
+    private View mainView(){
+        final FrameLayout frameLayout = view.findViewById(R.id.frameId);
+
+        frameLayout.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+
+        final RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getBaseContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setHasFixedSize(true);
+
+        /***********************************************************
+         * Connectis to fireabse to get information of the main page
+         ***********************************************************/
+        mPostReference = FirebaseDatabase.getInstance().getReference()
+                .child("Advertise");
+
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                ArrayList<Post> dataToShow = new ArrayList<>();
+                for (DataSnapshot dataArray : dataSnapshot.getChildren()) {
+
+                    Post val = new Post();
+                    Post data = dataArray.getValue(Post.class);
+                    val.userId = data.userId;
+                    dataToShow.add(val);
+                }
+
+                MyAdapter mAdapter = new MyAdapter(dataToShow);
+                recyclerView.setAdapter(mAdapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+
+        mPostReference.addValueEventListener(postListener);
 
 
         return view;

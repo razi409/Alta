@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    tools:context=".ActivityLectureInfo">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+
+    <LinearLayout
+        android:id="@+id/fullscreen_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="top">
+
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_margin="6dp"
+            android:elevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="top"
+                android:gravity="top">
+
+
+                <TextView
+                    android:id="@+id/Lecture_detail_name"
+                    android:layout_margin="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:keepScreenOn="true"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="Mathematics"
+                    android:fontFamily="sans-serif-smallcaps"/>
+
+
+                    <RatingBar
+                        android:id="@+id/course_info_rating"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:clickable="false"
+                        android:max="3"
+                        android:numStars="3"
+                        android:progressTint="@android:color/holo_orange_light"
+                        android:rating="1.0"
+                        android:scaleX="0.5"
+                        android:scaleY="0.5"
+                        android:stepSize="1.0" />
+
+                <TextView
+                    android:id="@+id/Lecture_detail_price"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:layout_height="30dp"
+                    android:ems="10"
+                    android:text="PRICE : 10 £"
+                    />
+
+                <TextView
+                    android:id="@+id/Lecture_detail_desc"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:text="This is a sample description"
+                    android:ems="10"
+                     />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:elevation="4dp"
+            >
+            <CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </CalendarView>
+        </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/fullscreen_content_controls"
+            style="?metaButtonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <Button
+                android:id="@+id/dummy_button"
+                style="?metaButtonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/book_button" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+</FrameLayout>

@@ -1,60 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v4.widget.NestedScrollView
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    android:orientation="vertical"
+    >
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="fill_vertical"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <RelativeLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
 
 
-        <RelativeLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="vertical">
-
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+        <LinearLayout
             android:id="@+id/cardFrame"
-            >
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
 
             <android.support.v7.widget.CardView
                 android:id="@+id/card_view"
-                android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="10dp"
-                >
+                android:padding="3dp"
+                android:layout_margin="6dp"
+                android:elevation="10dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_gravity="center"
                     android:layout_marginTop="30dp"
-                    android:padding="20dp"
-                    android:layout_gravity="center">
+                    android:orientation="vertical"
+                    android:padding="4dp">
+
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColorHint="@color/colorPrimary"
+                        android:textColorHint="@android:color/background_dark">
                         >
 
-                    <EditText
-                        android:id="@+id/user_fname"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/first_name" />
+                        <EditText
+                            android:id="@+id/user_fname"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/first_name" />
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColorHint="@color/colorPrimary">
+                        android:textColorHint="@android:color/background_dark">
 
                         <EditText
                             android:id="@+id/user_lname"
@@ -63,12 +80,33 @@
                             android:hint="@string/last_name" />
                     </android.support.design.widget.TextInputLayout>
 
+                    <Spinner
+                        android:id="@+id/user_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawSelectorOnTop="true"
+                        android:entries="@array/array_name">
+
+                    </Spinner>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@android:color/background_dark">
+
+                        <EditText
+                            android:id="@+id/user_birth_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/birth_date" />
+                    </android.support.design.widget.TextInputLayout>
+
                     <Button
                         android:id="@+id/birthBut"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="pick_date"
-                         />
+                        android:layout_marginBottom="7dp"
+                        android:text="Pick Birth Date" />
 
 
                 </LinearLayout>
@@ -76,21 +114,253 @@
 
             </android.support.v7.widget.CardView>
 
-        </FrameLayout>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:elevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:orientation="vertical"
+                    android:padding="4dp">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@android:color/background_dark">
+
+                        <EditText
+                            android:id="@+id/user_street"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/street" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@android:color/background_dark">
+
+                        <EditText
+                            android:id="@+id/user_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/number" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@android:color/background_dark">
+
+                        <EditText
+                            android:id="@+id/user_cap"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/cap" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:padding="20dp"
+                android:elevation="4dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:textColorHint="@android:color/background_dark">
+
+                        <EditText
+                            android:id="@+id/user_exp_subject"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/user_exp_subject" />
+                    </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:textColorHint="@android:color/background_dark">
+
+                        <EditText
+                            android:id="@+id/user_exp_level"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/user_exp_level" />
+                    </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:textColorHint="@android:color/background_dark">
+
+                        <EditText
+                            android:id="@+id/user_exp_where"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/user_exp_where" />
+                    </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:textColorHint="@android:color/background_dark">
+
+                        <EditText
+                            android:id="@+id/user_exp_duration"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/user_exp_duration" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:padding="10dp"
+                    android:elevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="4dp">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@android:color/background_dark">
+
+                        <EditText
+                            android:id="@+id/user_academic_subject"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/user_exp_subject" />
+                    </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@android:color/background_dark">
+
+                        <EditText
+                            android:id="@+id/user_academic_level"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Level" />
+                    </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@android:color/background_dark">
+
+                        <EditText
+                            android:id="@+id/user_academic_where"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/user_exp_where" />
+                    </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@android:color/background_dark">
+
+                        <EditText
+                            android:id="@+id/user_academic_duration"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="When" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:padding="10dp"
+                android:elevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.33"
+                        android:textColorHint="@android:color/background_dark">
+
+                        <EditText
+                            android:id="@+id/user_lang_one"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Language one" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.33"
+                        android:textColorHint="@android:color/background_dark">
+
+                        <EditText
+                            android:id="@+id/user_lang_two"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Language two" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.33"
+                        android:textColorHint="@android:color/background_dark">
+
+                        <EditText
+                            android:id="@+id/user_lang_three"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Language three" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
 
         <FrameLayout
-            android:layout_marginTop="20dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_centerHorizontal="true">
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="90dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
-                android:elevation="8dp"
-                android:layout_margin="4dp"
                 android:layout_gravity="center|top"
+                android:layout_margin="4dp"
+                android:elevation="8dp"
                 android:src="@drawable/sprof" />
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -103,25 +373,15 @@
 
         </FrameLayout>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cardFrame"
-                android:layout_marginTop="20dp"
-                >
-
-            <android.support.v7.widget.CardView
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:elevation="10dp"
-                >
-            </android.support.v7.widget.CardView>
-            </FrameLayout>
-
-        </RelativeLayout>
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp" />
 
 
-
+    </RelativeLayout>
+    </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
 
+</LinearLayout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/course_list_detail"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5dp"
+        android:background="@color/colorAccent"
+        android:elevation="5dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/course_list_name"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/course_list_level"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:textColor="@color/cardview_dark_background"
+                android:fontFamily="sans-serif"
+                android:textSize="20sp"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_weight="0.4">
+
+                <RatingBar
+                    android:id="@+id/course_list_rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:clickable="false"
+                    android:max="3"
+                    android:numStars="3"
+                    android:padding="10dp"
+                    android:progressTint="@android:color/holo_orange_light"
+                    android:rating="1.0"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"
+                    android:stepSize="1.0" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</FrameLayout>

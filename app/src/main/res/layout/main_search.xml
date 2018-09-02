@@ -7,7 +7,6 @@
     android:orientation="vertical"
     >
 
-
     <android.support.design.widget.TabLayout
         android:id="@+id/search_tabs"
         android:layout_width="match_parent"
@@ -20,55 +19,102 @@
         app:tabIndicatorColor="#666666"
         app:tabIndicatorHeight="2dp" />
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/frameSearch"
         android:layout_width="match_parent"
+        android:orientation="vertical"
         android:layout_height="match_parent">
 
-
-        <ScrollView
+        <android.support.v4.widget.NestedScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_vertical"
+            android:fillViewport="true"
+            android:fitsSystemWindows="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="30dp"
+                android:layout_marginBottom="40dp"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/regularSearch"
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <Spinner
-                        android:id="@+id/courseSpinner"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content" />
-
-                    <Spinner
-                        android:id="@+id/levelSpinner"
-                        android:layout_width="fill_parent"
+                    android:layout_margin="6dp"
+                    android:elevation="4dp"
+                    >
+                    <LinearLayout
+                        android:id="@+id/regularSearch"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp" />
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@color/cardview_dark_background"
+                            android:clickable="false"
+                            android:ems="@android:integer/config_longAnimTime"
+                            android:fontFamily="serif"
+                            android:gravity="left|center"
+                            android:paddingLeft="10dp"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="15sp"
+                            android:text="Basic Search" />
+
+                        <Spinner
+                            android:id="@+id/courseSpinner"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"/>
+
+                        <Spinner
+                            android:id="@+id/levelSpinner"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginBottom="20dp"/>
                 </LinearLayout>
-
-
-                <LinearLayout
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:padding="30dp"
                     android:id="@+id/advanceSearch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <Spinner
-                        android:id="@+id/genderSpinner"
-                        android:layout_width="fill_parent"
+                    android:layout_margin="6dp"
+                    android:visibility="gone"
+                    android:elevation="4dp"
+                    android:layout_marginBottom="60dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp" />
+                        android:orientation="vertical"
+                        android:animateLayoutChanges="true"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@color/cardview_dark_background"
+                            android:clickable="false"
+                            android:ems="@android:integer/config_longAnimTime"
+                            android:fontFamily="serif"
+                            android:gravity="left|center"
+                            android:paddingLeft="10dp"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="15sp"
+                            android:text="Advanced Search" />
+
+                            <Spinner
+                            android:id="@+id/genderSpinner"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="40dp" />
 
                     <LinearLayout
                         android:layout_marginTop="30dp"
@@ -78,16 +124,24 @@
                         android:visibility="visible">
 
 
+                        <TextView
+                            android:layout_width="50dp"
+                            android:layout_height="40dp"
+                            android:gravity="center"
+                            android:text="Age" />
+
                         <EditText
                             android:id="@+id/ageNum"
-                            android:gravity="center"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:ems="10"
-                            android:inputType="number"
+                            android:layout_marginBottom="35dp"
                             android:layout_marginLeft="10dp"
+                            android:layout_marginTop="15dp"
                             android:background="@drawable/rounded_edittext"
-                            android:hint="12"/>
+                            android:ems="10"
+                            android:gravity="center"
+                            android:hint="12"
+                            android:inputType="none" />
 
                         <SeekBar
                             android:id="@+id/ageSeekBar"
@@ -96,7 +150,8 @@
                             android:max="80"
                             android:paddingTop="15dp"
                             android:progress="12"
-                            android:thumb="@android:drawable/presence_online" />
+                            android:thumb="@android:drawable/presence_online"
+                            android:layout_marginBottom="20dp"/>
 
                     </LinearLayout>
 
@@ -105,8 +160,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:visibility="visible">
+                        android:visibility="visible"
+                        >
 
+                        <TextView
+                            android:layout_width="50dp"
+                            android:layout_height="40dp"
+                            android:gravity="center"
+                            android:text="Price" />
 
                         <EditText
                             android:id="@+id/priceNum"
@@ -114,10 +175,12 @@
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:ems="10"
-                            android:inputType="number"
+                            android:inputType="none"
                             android:layout_marginLeft="10dp"
                             android:background="@drawable/rounded_edittext"
-                            android:hint="12"/>
+                            android:hint="5"
+                            android:contextClickable="false"
+                            android:layout_marginBottom="15dp"/>
 
                         <SeekBar
                             android:id="@+id/priceSeekBar"
@@ -126,18 +189,18 @@
                             android:max="200"
                             android:paddingTop="15dp"
                             android:progress="5"
-                            android:thumb="@android:drawable/presence_online" />
+                            android:thumb="@android:drawable/presence_online"
+                            android:layout_marginBottom="20dp"/>
 
                     </LinearLayout>
 
                 </LinearLayout>
-
+                </android.support.v7.widget.CardView>
 
             </LinearLayout>
 
-
-        </ScrollView>
-    </FrameLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
 
 
 </LinearLayout>

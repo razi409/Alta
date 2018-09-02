@@ -95,9 +95,9 @@
         android:layout_gravity="bottom|end"
         android:layout_marginRight="@dimen/fab_margin"
         app:elevation="6dp"
-        android:backgroundTint="#9ea9af"
+        app:backgroundTint="#9ea9af"
         android:visibility="invisible"
-        android:src="@android:drawable/ic_menu_compass" />
+        android:src="@android:drawable/ic_input_add" />
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab2"
         android:layout_width="wrap_content"
@@ -106,9 +106,9 @@
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="@dimen/fab_margin"
         app:elevation="6dp"
-        android:backgroundTint="#00c5fc"
+        app:backgroundTint="#00c5fc"
         android:visibility="invisible"
-        android:src="@android:drawable/ic_menu_mapmode" />
+        android:src="@android:drawable/ic_dialog_map" />
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab3"
         android:layout_width="wrap_content"
@@ -117,9 +117,9 @@
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="17dp"
         app:elevation="6dp"
-        android:backgroundTint="#75b81d"
+        app:backgroundTint="#75b81d"
         android:visibility="invisible"
-        android:src="@android:drawable/ic_menu_crop" />
+        android:src="@android:drawable/btn_star_big_on" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab4"
@@ -129,9 +129,9 @@
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="17dp"
         app:elevation="6dp"
-        android:backgroundTint="#fe4f00"
+        app:backgroundTint="#fe4f00"
         android:visibility="invisible"
-        android:src="@android:drawable/ic_menu_crop" />
+        android:src="@android:drawable/ic_menu_revert" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -140,7 +140,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:rippleColor="@color/colorPrimaryDark"
-        android:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="@color/colorPrimary"
         app:srcCompat="@android:drawable/ic_menu_search" />
 
 

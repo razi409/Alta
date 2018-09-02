@@ -1,7 +1,9 @@
 package com.altashcools.altaschools;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -14,6 +16,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -37,10 +40,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Map;
+
+import static com.altashcools.altaschools.R.id.courseSpinner;
 
 /**
  * Created by raziehakbari on 25/12/2017.
@@ -56,7 +62,13 @@ public  class pagerFragment extends Fragment {
     public View view;
     public Spinner spinner;
     public Spinner spinnerLevel;
-
+    public Spinner spinnerGender;
+    public CardView adLayout;
+    public SeekBar priceSeek;
+    public FragmentSearchList searchMapFragment;
+    public ArrayList<Post> dataToShowOnSearch;
+    public TabLayout tabLayout;
+    public DatabaseReference mFirebaseDatabaseReference;
     public pagerFragment() {
     }
 
@@ -65,10 +77,10 @@ public  class pagerFragment extends Fragment {
         curView = view;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+         mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
         view = inflater.inflate(curView, container, false);
 
         switch (curView) {
@@ -76,16 +88,21 @@ public  class pagerFragment extends Fragment {
             case R.layout.main_fragment:
             {
                 mainView();
+                break;
             }
             case R.layout.main_search: {
                 mainSearch();
+                break;
             }
             case R.layout.main_login: {
-                mainLogin();}
+                mainLogin();
+                break;
+            }
         }
         return view;
     }
     private View mainLogin(){
+
 
 
         TabLayout tabLayout = view.findViewById(R.id.h_tabs);
@@ -107,7 +124,7 @@ public  class pagerFragment extends Fragment {
         forthTab.setText("Profile");
         tabLayout.addTab(forthTab);
 
-
+        tabLayout.getTabAt(3).select();
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -155,16 +172,15 @@ public  class pagerFragment extends Fragment {
         });
         return view;
 
-
     }
 
     private View mainSearch(){
 
 
-        /*********************
+        /*******************************************
          *sets the spinner view
-         ********************/
-        spinner =  view.findViewById(R.id.courseSpinner);
+         *********************************************/
+        spinner =  view.findViewById(courseSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.course_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -178,18 +194,18 @@ public  class pagerFragment extends Fragment {
         spinnerLevel.setAdapter(new NothingSelectedSpinnerAdapter(2,adapterLevel, R.layout.row_spinner,getActivity()));
 
 
-        Spinner spinnerGender = view.findViewById(R.id.genderSpinner);
+        spinnerGender = view.findViewById(R.id.genderSpinner);
         ArrayAdapter<CharSequence> adapterGender = ArrayAdapter.createFromResource(getActivity(), R.array.gender_array, android.R.layout.simple_spinner_item);
         adapterGender.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerGender.setAdapter(new NothingSelectedSpinnerAdapter(3,adapterGender, R.layout.row_spinner,getActivity()));
 
-        /*********************
+        /*****************************************************************************
          *sets the Seek bar
-         ********************/
+         ****************************************************************************/
 
         ageNum = view.findViewById(R.id.ageNum);
 
-        SeekBar ageSeek = view.findViewById(R.id.ageSeekBar);
+        final SeekBar ageSeek = view.findViewById(R.id.ageSeekBar);
         ageSeek.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
         ageSeek.getThumb().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
         ageCurrent = ageSeek.getProgress();
@@ -215,7 +231,7 @@ public  class pagerFragment extends Fragment {
 
         priceNum = view.findViewById(R.id.priceNum);
 
-        SeekBar priceSeek = view.findViewById(R.id.priceSeekBar);
+        priceSeek = view.findViewById(R.id.priceSeekBar);
         priceSeek.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
         priceSeek.getThumb().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
         priceCurrent = priceSeek.getProgress();
@@ -238,10 +254,10 @@ public  class pagerFragment extends Fragment {
             }
         });
 
-        /*****************
-         *sets tab layout
-         ****************/
-        TabLayout tabLayout = view.findViewById(R.id.search_tabs);
+        /*************************************************************
+         *sets tab layouts of List view and map view of search result
+         *************************************************************/
+        tabLayout = view.findViewById(R.id.search_tabs);
         tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.cardview_light_background));
 
         TabLayout.Tab firstTab = tabLayout.newTab(); // Create a new Tab names "First Tab"
@@ -260,11 +276,16 @@ public  class pagerFragment extends Fragment {
                 switch (tab.getPosition()) {
 
                     case 0: {
-                        replaceSearchFragment(new FragmentSearchList());
+                        FragmentSearchList searchListFragment = new FragmentSearchList();
+                        searchListFragment.setType("list");
+                        replaceSearchFragment(searchListFragment);
                         break;
                     }
                     case 1: {
-                        replaceSearchFragment(new FragmentSearchMap());
+                        searchMapFragment = new FragmentSearchList();
+                        searchMapFragment.setType("map");
+                        searchMapFragment.setDataToShow(dataToShowOnSearch);
+                        replaceSearchFragment(searchMapFragment);
                         break;
                     }
 
@@ -279,20 +300,40 @@ public  class pagerFragment extends Fragment {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
+                switch (tab.getPosition()) {
 
+                    case 0: {
+                        FragmentSearchList searchListFragment = new FragmentSearchList();
+                        searchListFragment.setType("list");
+                        replaceSearchFragment(searchListFragment);
+                        break;
+                    }
+                    case 1: {
+                        searchMapFragment = new FragmentSearchList();
+                        searchMapFragment.setType("map");
+                        searchMapFragment.setDataToShow(dataToShowOnSearch);
+                        replaceSearchFragment(searchMapFragment);
+                        break;
+                    }
+
+                }
             }
         });
 
 
-        /********************
+        /**************************************************
          * Handles click of fab1 till fab4 on Main Activity
-         *********************/
+         * fab1 is Advanced search
+         * fab2 is location search
+         * fab3 is best rating search
+         * fab4 is reversing the search
+         *************************************************/
 
         MainActivity.fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                LinearLayout adLayout = view.findViewById(R.id.advanceSearch);
+                adLayout = view.findViewById(R.id.advanceSearch);
                 if(adLayout.getVisibility() == View.VISIBLE)
                 {
                     adLayout.setVisibility(View.GONE);
@@ -308,16 +349,99 @@ public  class pagerFragment extends Fragment {
         MainActivity.fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                adLayout = view.findViewById(R.id.advanceSearch);
 
-                int course = spinner.getSelectedItemPosition();
-                int level = spinnerLevel.getSelectedItemPosition();
-                //TODO get also advanced values
+                String course    = "0";
+                String level     = "0";
+                String gender    = "0";
+                int price     = 5;
+                int age       = 12;
 
+                /***********************************************
+                 * gets basic and advance data
+                 **********************************************/
+                try {
+                     course = String.valueOf(spinner.getSelectedItemPosition());
+                     level = String.valueOf(spinnerLevel.getSelectedItemPosition());
+                }catch (NullPointerException nullPointEx){
+
+                    final AlertDialog.Builder builder;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        builder = new AlertDialog.Builder(getActivity().getApplicationContext(), android.R.style.Theme_Material_Dialog_Alert);
+                    } else {
+                        builder = new AlertDialog.Builder(getActivity().getApplicationContext());
+                    }
+                    builder.setTitle("WARNING")
+                            .setMessage("Please Choose One Course and One Level ")
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            })
+                           // .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                             //   public void onClick(DialogInterface dialog, int which) {
+                                    // do nothing
+                               // }
+                            //})
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
+
+                if(adLayout.getVisibility() == View.VISIBLE){
+                    if(spinnerGender.isSelected()){
+                        gender = String.valueOf(spinnerGender.getSelectedItemPosition());
+                    }
+                   // price = Integer.parseInt(priceNum.getText().toString());
+                   // age = Integer.parseInt(ageNum.getText().toString());
+                }
+                Query query;
+                if(!gender.equals("0")) {
+                     query = mFirebaseDatabaseReference.child("Course").child(level).child(course).orderByChild("Gender").equalTo(gender);
+                }else{
+                    query = mFirebaseDatabaseReference.child("Course").child(level).child(course).orderByKey();
+                }
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            dataToShowOnSearch = new ArrayList<>();
+                            for (DataSnapshot dataArray : dataSnapshot.getChildren()) {
+
+                                Post val = new Post();
+                                Post data = dataArray.getValue(Post.class);
+                                val.Gender = data.Gender;
+                                val.Price = data.Price;
+                                val.Rate = data.Rate;
+                                val.birthDate = data.birthDate;
+                                val.profilePic = data.profilePic;
+                                val.teacherCap = data.teacherCap;
+                                val.teacherCourseLevel= data.teacherCourseLevel;
+                                val.firstName = data.firstName;
+                                dataToShowOnSearch.add(data);
+
+                            }
+                            tabLayout.getTabAt(1).select();
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            //TODO handle cancle Error
+                        }
+                    });
 
 
             }
         });
 
+
+        MainActivity.fab4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(getChildFragmentManager().getBackStackEntryCount()>0){
+                    getChildFragmentManager().popBackStack("searchMap",FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                }
+            }
+        });
         return view;
 
     }
@@ -339,37 +463,43 @@ public  class pagerFragment extends Fragment {
         mPostReference = FirebaseDatabase.getInstance().getReference()
                 .child("Advertise");
 
-        ValueEventListener postListener = new ValueEventListener() {
+        Query advertiseQuery = mPostReference.orderByKey();
+        advertiseQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
                 ArrayList<Post> dataToShow = new ArrayList<>();
                 for (DataSnapshot dataArray : dataSnapshot.getChildren()) {
 
+                    //TODO: get the first five users based on their place and not expired value
                     Post val = new Post();
                     Post data = dataArray.getValue(Post.class);
                     val.userId = data.userId;
+                    val.profilePic = data.profilePic;
+                    val.place = data.place;
+                    val.firstName = data.firstName;
+                    val.lastName = data.lastName;
+                    val.course = data.course;
+                    val.description= data.description;
+                    val.addLink = data.addLink;
                     dataToShow.add(val);
+
                 }
 
-                MyAdapter mAdapter = new MyAdapter(dataToShow);
+                MyAdapter mAdapter = new MyAdapter(dataToShow,"main");
                 recyclerView.setAdapter(mAdapter);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                //TODO: show a dialog box for connection ERROR
             }
-        };
-
-        mPostReference.addValueEventListener(postListener);
-
+        });
 
         return view;
     }
 
     public void replaceFragment(Fragment fragment) {
-        final FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.frameLogin, fragment);
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         transaction.commit();
@@ -377,9 +507,10 @@ public  class pagerFragment extends Fragment {
     }
 
     public void replaceSearchFragment(Fragment fragment) {
-        final FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.frameSearch, fragment);
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        transaction.addToBackStack("searchMap");
         transaction.commit();
 
     }

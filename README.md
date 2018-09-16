@@ -17,7 +17,9 @@ for becoming a teacher or a student as easy as possible.</i></b>
 <li><a href="#communication with services">Communication with services</a></li>
 </ul>
 </li>
-<li><a href="#why minerva?">Why the name of Alta Schools?</a></li>
+<li><a href="#why%20Alta?">Why the name of Alta Schools?</a></li>
+  <li><a href="#Data%20Gathering">Data Gathering</a></li>
+
 <li><a href="#contributions">Contributions</a></li>
 </td>
 <td width="100%">
@@ -104,8 +106,17 @@ Alta Schools project is takin advantage of. Also it is good to mention that the 
 Firebase API, which creates an easy base for communication and data transition.
 Alta Schools has two method of sign ups, one is through Google API, by choosing a Google account, and the other is through Facebook
 API by entering Facebook credentials by the End user.
+<h3>Why Alta?</h3>
+<img src="https://github.com/razi409/Alta/blob/master/images/logo.png?raw=true">
+
+
+
 
 <h3>Data Gathering</h3>
+<img src="https://github.com/razi409/Alta/blob/master/images/datamining.png?raw=true">
+
+In order to gather some teachers for our application, we decided to use a couple of techniques in data mining, by scraping 
+advertisment published by private teachers, we could gather a list of potentioal candidates for our Application.
 
 <h2><a id="user-content-templates" class="anchor" href="#why Alta Schools?" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Why the name of Minerva?</h2>
 <table>
@@ -122,9 +133,6 @@ Minerva was the Roman goddess of wisdom, knowledge & the sponsor of arts. Throug
 
 <h2><a class="anchor" href="#contributions" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Contributions</h2>
 
-- <b>Julio César Carrasquel</b>
-  - <img src="https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAANyAAAAJGRlZTNlZDQwLTk4YTItNDA1MS04MzBjLWJmNGQ5M2RmZGUxYw.png" height="20" width="20"> <b>Linkedin</b>:  <a href="https://www.linkedin.com/in/julio-c%C3%A9sar-carrasquel-b5729844/">https://www.linkedin.com/in/julio-césar-carrasquel-b5729844/</a> 
-  - <img id="imageLogo" class="logo-image" src="http://www.freeiconspng.com/uploads/iconmonstr-email-4-icon-27.png" alt="iconmonstr email 4 icon" style="border-width:0px;" height="20" width="20"> <b>Email</b>: carrasquelgamez.1726154@studenti.uniroma1.it
 - <b>Razieh Akbari</b>
   -  <img src="https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAANyAAAAJGRlZTNlZDQwLTk4YTItNDA1MS04MzBjLWJmNGQ5M2RmZGUxYw.png" height="20" width="20"> <b>Linkedin</b>:  <a href="https://www.linkedin.com/in/razieh-akbari-2019b075/"> https://www.linkedin.com/in/razieh-akbari-2019b075/</a>
   - <img id="imageLogo" class="logo-image" src="http://www.freeiconspng.com/uploads/iconmonstr-email-4-icon-27.png" alt="iconmonstr email 4 icon" style="border-width:0px;" height="20" width="20"> <b>Email</b>: raziehakbari409@gmail.com

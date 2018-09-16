@@ -124,7 +124,6 @@ public  class pagerFragment extends Fragment {
         forthTab.setText("Profile");
         tabLayout.addTab(forthTab);
 
-        tabLayout.getTabAt(3).select();
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -136,13 +135,13 @@ public  class pagerFragment extends Fragment {
                     }
 
                     case 1: {
-                        replaceFragment(new FragmentTab());
+                        replaceFragment(new studentFragmentTab());
                         break;
 
                     }
 
                     case 2: {
-                        replaceFragment(new FragmentTab());
+                       // replaceFragment(new FragmentTab());
                         break;
 
                     }
@@ -165,11 +164,15 @@ public  class pagerFragment extends Fragment {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
+                if(getChildFragmentManager().getBackStackEntryCount()>0){
+                    getChildFragmentManager().popBackStack("loginPage",FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                }
             }
 
 
         });
+        tabLayout.getTabAt(3).select();
+
         return view;
 
     }
@@ -284,8 +287,11 @@ public  class pagerFragment extends Fragment {
                     case 1: {
                         searchMapFragment = new FragmentSearchList();
                         searchMapFragment.setType("map");
-                        searchMapFragment.setDataToShow(dataToShowOnSearch);
-                        replaceSearchFragment(searchMapFragment);
+                        if(dataToShowOnSearch!=null)
+                        {
+                            searchMapFragment.setDataToShow(dataToShowOnSearch);
+                            replaceSearchFragment(searchMapFragment);
+                        }
                         break;
                     }
 
@@ -309,10 +315,13 @@ public  class pagerFragment extends Fragment {
                         break;
                     }
                     case 1: {
-                        searchMapFragment = new FragmentSearchList();
+                        FragmentSearchList searchMapFragment = new FragmentSearchList();
                         searchMapFragment.setType("map");
-                        searchMapFragment.setDataToShow(dataToShowOnSearch);
-                        replaceSearchFragment(searchMapFragment);
+                        if(dataToShowOnSearch!=null)
+                        {
+                            searchMapFragment.setDataToShow(dataToShowOnSearch);
+                            replaceSearchFragment(searchMapFragment);
+                        }
                         break;
                     }
 
@@ -349,88 +358,89 @@ public  class pagerFragment extends Fragment {
         MainActivity.fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try{
                 adLayout = view.findViewById(R.id.advanceSearch);
-
-                String course    = "0";
-                String level     = "0";
-                String gender    = "0";
-                int price     = 5;
-                int age       = 12;
+                String course = null;
+                String level = null;
+                String gender = "0";
+                int price = 5;
+                int age = 12;
 
                 /***********************************************
                  * gets basic and advance data
                  **********************************************/
-                try {
-                     course = String.valueOf(spinner.getSelectedItemPosition());
-                     level = String.valueOf(spinnerLevel.getSelectedItemPosition());
-                }catch (NullPointerException nullPointEx){
 
-                    final AlertDialog.Builder builder;
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        builder = new AlertDialog.Builder(getActivity().getApplicationContext(), android.R.style.Theme_Material_Dialog_Alert);
-                    } else {
-                        builder = new AlertDialog.Builder(getActivity().getApplicationContext());
-                    }
-                    builder.setTitle("WARNING")
-                            .setMessage("Please Choose One Course and One Level ")
-                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.cancel();
-                                }
-                            })
-                           // .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                             //   public void onClick(DialogInterface dialog, int which) {
-                                    // do nothing
-                               // }
-                            //})
-                            .setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
-                }
+                course = String.valueOf(spinner.getSelectedItemPosition());
+                level = String.valueOf(spinnerLevel.getSelectedItemPosition());
 
-                if(adLayout.getVisibility() == View.VISIBLE){
-                    if(spinnerGender.isSelected()){
+
+//                    final AlertDialog.Builder builder;
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                        builder = new AlertDialog.Builder(getActivity().getApplicationContext(), android.R.style.Theme_Material_Dialog_Alert);
+//                    } else {
+//                        builder = new AlertDialog.Builder(getActivity().getApplicationContext());
+//                    }
+//                    builder.setTitle("WARNING")
+//                            .setMessage("Please Choose One Course and One Level ")
+//                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    dialog.cancel();
+//                                }
+//                            })
+//                           // .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+//                             //   public void onClick(DialogInterface dialog, int which) {
+//                                    // do nothing
+//                               // }
+//                            //})
+//                            .setIcon(android.R.drawable.ic_dialog_alert)
+//                            .show();
+
+
+                if (adLayout.getVisibility() == View.VISIBLE) {
+                    if (spinnerGender.isSelected()) {
                         gender = String.valueOf(spinnerGender.getSelectedItemPosition());
                     }
-                   // price = Integer.parseInt(priceNum.getText().toString());
-                   // age = Integer.parseInt(ageNum.getText().toString());
+                    // price = Integer.parseInt(priceNum.getText().toString());
+                    // age = Integer.parseInt(ageNum.getText().toString());
                 }
                 Query query;
-                if(!gender.equals("0")) {
-                     query = mFirebaseDatabaseReference.child("Course").child(level).child(course).orderByChild("Gender").equalTo(gender);
-                }else{
-                    query = mFirebaseDatabaseReference.child("Course").child(level).child(course).orderByKey();
+                if (!gender.equals("0")) {
+                    query = mFirebaseDatabaseReference.child("Course").child(level).child(course).orderByChild("Gender").equalTo(gender);
+                } else {
+                    query = mFirebaseDatabaseReference.child("Course").child(level).child(course);
                 }
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            dataToShowOnSearch = new ArrayList<>();
-                            for (DataSnapshot dataArray : dataSnapshot.getChildren()) {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        dataToShowOnSearch = new ArrayList<>();
+                        for (DataSnapshot dataArray : dataSnapshot.getChildren()) {
 
-                                Post val = new Post();
-                                Post data = dataArray.getValue(Post.class);
-                                val.Gender = data.Gender;
-                                val.Price = data.Price;
-                                val.Rate = data.Rate;
-                                val.birthDate = data.birthDate;
-                                val.profilePic = data.profilePic;
-                                val.teacherCap = data.teacherCap;
-                                val.teacherCourseLevel= data.teacherCourseLevel;
-                                val.firstName = data.firstName;
-                                dataToShowOnSearch.add(data);
-
-                            }
-                            tabLayout.getTabAt(1).select();
+                            Post val = new Post();
+                            Post data = dataArray.getValue(Post.class);
+                            val.Gender = data.Gender;
+                            val.Price = data.Price;
+                            val.Rate = data.Rate;
+                            val.birthDate = data.birthDate;
+                            val.profilePic = data.profilePic;
+                            val.teacherCap = data.teacherCap;
+                            val.teacherCourseLevel = data.teacherCourseLevel;
+                            val.firstName = data.firstName;
+                            dataToShowOnSearch.add(data);
 
                         }
+                        tabLayout.getTabAt(1).select();
 
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            //TODO handle cancle Error
-                        }
-                    });
+                    }
 
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        //TODO handle cancle Error
+                    }
+                });
 
+            }catch (NullPointerException nullPointEx){}
             }
+
         });
 
 
@@ -478,7 +488,7 @@ public  class pagerFragment extends Fragment {
                     val.place = data.place;
                     val.firstName = data.firstName;
                     val.lastName = data.lastName;
-                    val.course = data.course;
+                    val.courses = data.courses;
                     val.description= data.description;
                     val.addLink = data.addLink;
                     dataToShow.add(val);
@@ -501,6 +511,7 @@ public  class pagerFragment extends Fragment {
     public void replaceFragment(Fragment fragment) {
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.frameLogin, fragment);
+        transaction.addToBackStack("loginPage");
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         transaction.commit();
 

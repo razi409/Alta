@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -27,30 +28,28 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorAccent"
-            app:expandedTitleMarginStart="48dp"
+            app:contentScrim="@color/cardview_light_background"
             app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="48dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <LinearLayout
-                android:paddingLeft="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:orientation="horizontal"
-                >
+                android:paddingLeft="5dp">
 
 
                 <ImageView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="15dp"
                     android:id="@+id/htab_header"
                     android:layout_width="0dp"
                     android:layout_height="38dp"
-                    android:background="@drawable/logo_main"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
                     android:layout_weight="0.4"
+                    android:background="@drawable/logo_main"
                     android:fitsSystemWindows="true"
-                    android:scaleType="centerInside"
-                    />
+                    android:scaleType="centerInside" />
 
                 <TextView
                     android:id="@+id/textView"
@@ -62,25 +61,29 @@
             </LinearLayout>
 
 
-
             <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_collapseMode="parallax"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            android:gravity="top"
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:gravity="top"
+                app:layout_collapseMode="parallax"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
 
                 />
+            <View
+                android:id="@+id/toolbar_shadow"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/toolbar_dropshadow" />
 
             <android.support.design.widget.TabLayout
                 android:id="@+id/htab_tabs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:tabIndicatorHeight="2dp"
+                android:layout_height="?attr/actionBarSize"
                 android:layout_gravity="bottom"
                 app:tabIndicatorColor="@android:color/holo_red_light"
-                />
+                app:tabIndicatorHeight="2dp" />
 
 
         </android.support.design.widget.CollapsingToolbarLayout>
@@ -139,9 +142,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:rippleColor="@color/colorPrimaryDark"
-        app:backgroundTint="@color/colorPrimary"
-        app:srcCompat="@android:drawable/ic_menu_search" />
+        app:backgroundTint="@color/secondPrimary"
+        app:srcCompat="@drawable/search" />
 
 
     <android.support.v4.view.ViewPager

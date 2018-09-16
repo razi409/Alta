@@ -34,7 +34,6 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     private ArrayList<Post> mDataset;
-    private long userId;
     private String type;
     // Provide a suitable constructor (depends on the kind of dataset)
     public MyAdapter(ArrayList<Post> myDataset, String type) {
@@ -58,6 +57,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         //course list data
         public TextView courseName;
         public TextView courseLevel;
+        public TextView coursePrice;
         public RatingBar ratingBar;
         public CardView lectureCardView;
 
@@ -67,13 +67,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 name = v.findViewById(R.id.user_name);
                 course = v.findViewById(R.id.user_course);
                 description = v.findViewById(R.id.user_short_desc);
-                circleImageView = v.findViewById(R.id.profile_image);
+                //circleImageView = v.findViewById(R.id.profile_image);
                 cardView = v.findViewById(R.id.card_view);
                 linearLayout = v.findViewById(R.id.advertise_layout);
             } else if (type.equals("course_list")) {
                 courseName = v.findViewById(R.id.course_list_name);
                 courseLevel = v.findViewById(R.id.course_list_level);
-                ratingBar = v.findViewById(R.id.course_list_rating);
+                coursePrice = v.findViewById(R.id.course_list_price);
+               // ratingBar = v.findViewById(R.id.course_list_rating);
                 lectureCardView = v.findViewById(R.id.course_list_detail);
             }
             view = v;
@@ -101,21 +102,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
 
         if (type.equals("main")) {
             holder.name.setText(mDataset.get(position).firstName + "  " + mDataset.get(position).lastName);
-            holder.course.setText(mDataset.get(position).course);
+            holder.course.setText(mDataset.get(position).courses);
             holder.description.setText(mDataset.get(position).description);
-            Picasso.with(holder.view.getContext().getApplicationContext()).load(mDataset.get(position).profilePic).into(holder.circleImageView);
+            //Picasso.with(holder.view.getContext().getApplicationContext()).load(mDataset.get(position).profilePic).into(holder.circleImageView);
             final ImageView backgrounImage = new ImageView(holder.view.getContext().getApplicationContext());
             Picasso.with(holder.view.getContext().getApplicationContext()).load(mDataset.get(position).addLink).into(backgrounImage, new Callback() {
                 @Override
                 public void onSuccess() {
 
-                    //holder.linearLayout.setBackgroundDrawable(backgrounImage.getDrawable());
+                    holder.linearLayout.setBackgroundDrawable(backgrounImage.getDrawable());
                 }
 
                 @Override
@@ -124,13 +125,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 }
             });
 
-            userId = mDataset.get(position).userId;
             holder.cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(view.getContext(), ActivityTeacherProfileView.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    String userIdToPass = Long.toString(userId);
+                    String userIdToPass = Long.toString(mDataset.get(position).userId);
                     intent.putExtra("userId", userIdToPass);
                     view.getContext().getApplicationContext().startActivity(intent);
                 }
@@ -138,7 +138,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         } else if (type.equals("course_list")) {
             holder.courseName.setText(mDataset.get(position).courseName);
             holder.courseLevel.setText(mDataset.get(position).courseLevel);
-            holder.ratingBar.setNumStars(mDataset.get(position).ratings);
+            holder.coursePrice.setText(mDataset.get(position).Price+" $");
+           // holder.ratingBar.setNumStars(mDataset.get(position).Rate);
             holder.lectureCardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

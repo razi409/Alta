@@ -1,17 +1,24 @@
 <resources>
 
+
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:fontFamily">@fonts/OpenSans-Light.ttf</item>
-        <item name="fontFamily">@fonts/OpenSans-Light.ttf
-        </item> <!-- target android sdk versions < 26 and > 14 if theme other than AppCompat -->
+        <item name="elevation">5dp</item>
+
+        <!-- target android sdk versions < 26 and > 14 if theme other than AppCompat -->
 
     </style>
 
+    <style name="ToolBarStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColorPrimary">@android:color/background_light</item>
+        <item name="android:textColorSecondary">@android:color/darker_gray</item>
+        <item name="actionMenuTextColor">@android:color/darker_gray</item>
+        <item name="elevation">5dp</item>
+    </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -19,7 +26,9 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" >
+        <item name="elevation">5dp</item>
+    </style>
 
     <style name="FullscreenTheme" parent="AppTheme">
         <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
@@ -35,5 +44,4 @@
     <style name="customRatingBar"
         parent="android:style/Widget.Material.RatingBar.Small">
     </style>
-
 </resources>

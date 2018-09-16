@@ -15,7 +15,8 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
             android:elevation="6dp"
             android:background="@color/colorAccent"
             android:layout_margin="5dp"
@@ -26,19 +27,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginLeft="4dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/contact"/>
                 <TextView
                     android:id="@+id/profile_course_contact_header"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@color/cardview_dark_background"
                     android:clickable="false"
                     android:ems="@android:integer/config_longAnimTime"
-                    android:fontFamily="serif"
                     android:gravity="left|center"
                     android:paddingLeft="10dp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="#000000"
                     android:textSize="15sp"
-                    android:text="Contact Information" />
+                    android:text="Contact" />
+            </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -51,19 +61,19 @@
                         android:layout_height="30dp"
                         android:orientation="horizontal">
 
-                        <FrameLayout
-                            android:layout_width="40dp"
-                            android:layout_height="match_parent"
-                            android:layout_centerHorizontal="true"
-                            android:layout_gravity="left"
-                            android:layout_margin="2dp">
+                        <!--<FrameLayout-->
+                            <!--android:layout_width="40dp"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_centerHorizontal="true"-->
+                            <!--android:layout_gravity="left"-->
+                            <!--android:layout_margin="2dp">-->
 
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="30dp"
-                                android:layout_height="20dp"
-                                android:elevation="2dp"
-                                android:src="@android:drawable/stat_sys_phone_call" />
-                        </FrameLayout>
+                            <!--<de.hdodenhof.circleimageview.CircleImageView-->
+                                <!--android:layout_width="30dp"-->
+                                <!--android:layout_height="20dp"-->
+                                <!--android:elevation="2dp"-->
+                                <!--android:src="@android:drawable/stat_sys_phone_call" />-->
+                        <!--</FrameLayout>-->
 
                         <TextView
                             android:id="@+id/profile_course_contact_phone"
@@ -71,7 +81,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="left|center"
-                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/cardview_dark_background"
+                            android:layout_marginLeft="36dp"
                             android:text="0985324567" />
 
                     </LinearLayout>
@@ -80,19 +91,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:orientation="horizontal">
-                        <FrameLayout
-                            android:layout_width="40dp"
-                            android:layout_height="match_parent"
-                            android:layout_centerHorizontal="true"
-                            android:layout_gravity="left"
-                            android:layout_margin="2dp">
+                        <!--<FrameLayout-->
+                            <!--android:layout_width="40dp"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_centerHorizontal="true"-->
+                            <!--android:layout_gravity="left"-->
+                            <!--android:layout_margin="2dp">-->
 
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="30dp"
-                                android:layout_height="20dp"
-                                android:elevation="2dp"
-                                android:src="@android:drawable/ic_dialog_map" />
-                        </FrameLayout>
+                            <!--<de.hdodenhof.circleimageview.CircleImageView-->
+                                <!--android:layout_width="30dp"-->
+                                <!--android:layout_height="20dp"-->
+                                <!--android:elevation="2dp"-->
+                                <!--android:src="@android:drawable/ic_dialog_map" />-->
+                        <!--</FrameLayout>-->
 
                         <TextView
                             android:id="@+id/profile_course_contact_location"
@@ -100,7 +111,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="left|center"
-                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/cardview_dark_background"
+                            android:layout_marginLeft="36dp"
                             android:text="ROMA" />
                     </LinearLayout>
 
@@ -108,19 +120,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:orientation="horizontal">
-                        <FrameLayout
-                            android:layout_width="40dp"
-                            android:layout_height="match_parent"
-                            android:layout_centerHorizontal="true"
-                            android:layout_gravity="left"
-                            android:layout_margin="2dp">
+                        <!--<FrameLayout-->
+                            <!--android:layout_width="40dp"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_centerHorizontal="true"-->
+                            <!--android:layout_gravity="left"-->
+                            <!--android:layout_margin="2dp">-->
 
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="30dp"
-                                android:layout_height="20dp"
-                                android:elevation="2dp"
-                                android:src="@android:drawable/ic_dialog_email" />
-                        </FrameLayout>
+                            <!--<de.hdodenhof.circleimageview.CircleImageView-->
+                                <!--android:layout_width="30dp"-->
+                                <!--android:layout_height="20dp"-->
+                                <!--android:elevation="2dp"-->
+                                <!--android:src="@android:drawable/ic_dialog_email" />-->
+                        <!--</FrameLayout>-->
 
                         <TextView
                             android:id="@+id/profile_course_contact_email"
@@ -128,7 +140,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="left|center"
-                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/cardview_dark_background"
+                            android:layout_marginLeft="36dp"
                             android:text="raziAk@gmail.com" />
                     </LinearLayout>
                 </LinearLayout>
@@ -136,7 +149,8 @@
         </android.support.v7.widget.CardView>
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
             android:elevation="6dp"
             android:background="@color/colorAccent"
             android:layout_margin="5dp"
@@ -145,114 +159,71 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@color/cardview_dark_background"
-                    android:clickable="false"
-                    android:ems="@android:integer/config_longAnimTime"
-                    android:fontFamily="serif"
-                    android:gravity="left|center"
-                    android:paddingLeft="10dp"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="15sp"
-                    android:text="Experience Information" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:background="@color/cardview_light_background"
-                    android:fontFamily="serif"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:gravity="center"
-                    android:text="Subject"
-                    android:textColor="@color/cardview_dark_background"
-                    android:textSize="15sp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:background="@color/cardview_light_background"
-                    android:fontFamily="serif"
-                    android:gravity="center"
-                    android:text="Level"
-                    android:textColor="@color/cardview_dark_background"
-                    android:textSize="15sp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:background="@color/cardview_light_background"
-                    android:fontFamily="serif"
-                    android:gravity="center"
-                    android:text="Where"
-                    android:textColor="@color/cardview_dark_background"
-                    android:textSize="15sp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:background="@color/cardview_light_background"
-                    android:fontFamily="serif"
-                    android:gravity="center"
-                    android:text="Duration"
-                    android:textColor="@color/cardview_dark_background"
-                    android:textSize="15sp" />
-            </LinearLayout>
+                    android:layout_marginLeft="4dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/work"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:clickable="false"
+                        android:ems="@android:integer/config_longAnimTime"
+                        android:gravity="left|center"
+                        android:paddingLeft="10dp"
+                        android:textColor="#000000"
+                        android:textSize="15sp"
+                        android:text="Experience" />
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/profile_course_exp_info_subject_one"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.25"
-                        android:background="@color/cardview_light_background"
-                        android:fontFamily="serif"
-                        android:gravity="center"
-                        android:hint="subject"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:gravity="left"
+                        android:layout_marginLeft="36dp"
                         android:textColor="@color/cardview_dark_background"
-                        android:textSize="15sp" />
+                        android:textSize="17sp" />
                     <TextView
                         android:id="@+id/profile_course_exp_info_level_one"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.25"
-                        android:background="@color/cardview_light_background"
-                        android:fontFamily="serif"
-                        android:gravity="center"
-                        android:hint="Level"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:layout_marginLeft="36dp"
                         android:textColor="@color/cardview_dark_background"
                         android:textSize="15sp" />
-                    <TextView
-                        android:id="@+id/profile_course_exp_info_where_one"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.25"
-                        android:background="@color/cardview_light_background"
-                        android:fontFamily="serif"
-                        android:gravity="center"
-                        android:hint="Where"
-                        android:textColor="@color/cardview_dark_background"
-                        android:textSize="15sp" />
-                    <TextView
-                        android:id="@+id/profile_course_exp_info_duration_one"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.25"
-                        android:background="@color/cardview_light_background"
-                        android:fontFamily="serif"
-                        android:gravity="center"
-                        android:hint="Duration"
-                        android:textColor="@color/cardview_dark_background"
-                        android:textSize="15sp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/profile_course_exp_info_where_one"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="left"
+                            android:layout_marginLeft="36dp"
+                            android:textColor="@color/cardview_dark_background"
+                            android:textSize="15sp" />
+                        <TextView
+                            android:id="@+id/profile_course_exp_info_duration_one"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="left"
+                            android:layout_marginLeft="6dp"
+                            android:textColor="@color/cardview_dark_background"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -267,7 +238,6 @@
                         android:background="@color/cardview_light_background"
                         android:fontFamily="serif"
                         android:gravity="center"
-                        android:hint="subject"
                         android:textColor="@color/cardview_dark_background"
                         android:textSize="15sp" />
                     <TextView
@@ -278,7 +248,6 @@
                         android:background="@color/cardview_light_background"
                         android:fontFamily="serif"
                         android:gravity="center"
-                        android:hint="Level"
                         android:textColor="@color/cardview_dark_background"
                         android:textSize="15sp" />
                     <TextView
@@ -289,7 +258,6 @@
                         android:background="@color/cardview_light_background"
                         android:fontFamily="serif"
                         android:gravity="center"
-                        android:hint="Where"
                         android:textColor="@color/cardview_dark_background"
                         android:textSize="15sp" />
                     <TextView
@@ -300,7 +268,6 @@
                         android:background="@color/cardview_light_background"
                         android:fontFamily="serif"
                         android:gravity="center"
-                        android:hint="Duration"
                         android:textColor="@color/cardview_dark_background"
                         android:textSize="15sp" />
                 </LinearLayout>
@@ -308,7 +275,8 @@
         </android.support.v7.widget.CardView>
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
             android:elevation="6dp"
             android:background="@color/colorAccent"
             android:layout_margin="5dp"
@@ -317,122 +285,81 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginLeft="4dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/academic"/>
                 <TextView
                     android:id="@+id/profile_course_academic_header"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@color/cardview_dark_background"
                     android:clickable="false"
                     android:ems="@android:integer/config_longAnimTime"
-                    android:fontFamily="serif"
                     android:gravity="left|center"
                     android:paddingLeft="10dp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="#000000"
                     android:textSize="15sp"
-                    android:text="Academic Information" />
+                    android:text="Academic" />
+            </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.25"
-                        android:background="@color/cardview_light_background"
-                        android:fontFamily="serif"
-                        android:gravity="center"
-                        android:text="Subject"
-                        android:textColor="@color/cardview_dark_background"
-                        android:textSize="15sp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.25"
-                        android:background="@color/cardview_light_background"
-                        android:fontFamily="serif"
-                        android:gravity="center"
-                        android:text="Level"
-                        android:textColor="@color/cardview_dark_background"
-                        android:textSize="15sp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.25"
-                        android:background="@color/cardview_light_background"
-                        android:fontFamily="serif"
-                        android:gravity="center"
-                        android:text="Where"
-                        android:textColor="@color/cardview_dark_background"
-                        android:textSize="15sp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.25"
-                        android:background="@color/cardview_light_background"
-                        android:fontFamily="serif"
-                        android:gravity="center"
-                        android:text="Year"
-                        android:textColor="@color/cardview_dark_background"
-                        android:textSize="15sp" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/profile_course_academic_info_subject_one"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.25"
-                        android:background="@color/cardview_light_background"
-                        android:fontFamily="serif"
-                        android:gravity="center"
-                        android:hint="subject"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
                         android:textColor="@color/cardview_dark_background"
-                        android:textSize="15sp" />
+                        android:layout_marginLeft="36dp"
+                        android:textStyle="bold"
+                        android:textSize="17sp" />
                     <TextView
                         android:id="@+id/profile_course_academic_info_level_one"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.25"
-                        android:background="@color/cardview_light_background"
-                        android:fontFamily="serif"
-                        android:gravity="center"
-                        android:hint="Level"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
                         android:textColor="@color/cardview_dark_background"
+                        android:layout_marginLeft="36dp"
                         android:textSize="15sp" />
-                    <TextView
-                        android:id="@+id/profile_course_academic_info_where_one"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.25"
-                        android:background="@color/cardview_light_background"
-                        android:fontFamily="serif"
-                        android:gravity="center"
-                        android:hint="Where"
-                        android:textColor="@color/cardview_dark_background"
-                        android:textSize="15sp" />
-                    <TextView
-                        android:id="@+id/profile_course_academic_info_year_one"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.25"
-                        android:background="@color/cardview_light_background"
-                        android:fontFamily="serif"
-                        android:gravity="center"
-                        android:hint="Year"
-                        android:textColor="@color/cardview_dark_background"
-                        android:textSize="15sp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/profile_course_academic_info_where_one"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="left"
+                            android:textColor="@color/cardview_dark_background"
+                            android:layout_marginLeft="36dp"
+                            android:textSize="15sp" />
+                        <TextView
+                            android:id="@+id/profile_course_academic_info_year_one"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="left"
+                            android:textColor="@color/cardview_dark_background"
+                            android:layout_marginLeft="6dp"
+                            android:textSize="15sp"
+                            android:layout_marginBottom="10dp"/>
+                    </LinearLayout>
+
                 </LinearLayout>
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
             android:elevation="6dp"
             android:background="@color/colorAccent"
             android:layout_margin="5dp"
@@ -442,64 +369,72 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 >
-            <TextView
-                android:id="@+id/profile_course_language_header"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/cardview_dark_background"
-                android:clickable="false"
-                android:ems="@android:integer/config_longAnimTime"
-                android:fontFamily="serif"
-                android:gravity="left|center"
-                android:paddingLeft="10dp"
-                android:textColor="@color/colorAccent"
-                android:textSize="15sp"
-                android:text="Language Information" />
-                <TextView
-                    android:id="@+id/profile_course_language_one"
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:layout_weight="0.25"
-                    android:background="@color/cardview_light_background"
-                    android:fontFamily="serif"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:gravity="center"
-                    android:hint="Language One"
-                    android:textColor="@color/cardview_dark_background"
-                    android:textSize="15sp"
-                    android:layout_marginLeft="25dp"
-                    />
-                <TextView
-                    android:id="@+id/profile_course_language_two"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:layout_weight="0.25"
-                    android:background="@color/cardview_light_background"
-                    android:fontFamily="serif"
-                    android:gravity="center"
-                    android:hint="Language Two"
-                    android:textColor="@color/cardview_dark_background"
-                    android:textSize="15sp"
-                    android:layout_marginLeft="25dp"
-                    />
-                <TextView
-                    android:id="@+id/profile_course_language_three"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:layout_weight="0.25"
-                    android:background="@color/cardview_light_background"
-                    android:fontFamily="serif"
-                    android:gravity="center"
-                    android:hint="Language Three"
-                    android:textColor="@color/cardview_dark_background"
-                    android:textSize="15sp"
-                    android:layout_marginLeft="25dp"
-                    />
+                    android:layout_marginLeft="4dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/language"/>
+                    <TextView
+                        android:id="@+id/profile_course_language_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:clickable="false"
+                        android:ems="@android:integer/config_longAnimTime"
+                        android:gravity="left|center"
+                        android:paddingLeft="10dp"
+                        android:textColor="#000000"
+                        android:textSize="15sp"
+                        android:text="Language " />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/profile_course_language_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:textSize="15sp"
+                        android:textColor="@color/cardview_dark_background"
+                        android:layout_marginLeft="36dp"
+                        />
+                    <TextView
+                        android:id="@+id/profile_course_language_two"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/cardview_dark_background"
+                        android:gravity="left"
+                        android:textSize="15sp"
+                        android:layout_marginLeft="5dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/profile_course_language_three"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:textColor="@color/cardview_dark_background"
+                        android:textSize="15sp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="10dp"
+                        />
+                </LinearLayout>
+
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:paddingTop="15dp"
             android:id="@+id/prfile_course_list_view"
             android:elevation="5dp"/>
 

@@ -74,28 +74,27 @@ Alta School Application is a platform to share these demands and needs so those 
 <tbody>
 <tr>
 <td><p>Main Page</p></td>
-<td align="middle" width="100%"><img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-06-23_11-39-52.jpg" width="240" height="426" alt="responsive">
-<img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-07-07_00-22-07.jpg" width="240" height="426" alt="responsive"></td>
+<td align="middle" width="100%"><img src="https://github.com/razi409/Alta/blob/master/images/Alta%20pic%2001.jpg" width="240" height="426" alt="responsive"></td>
 </tr>
 
 <tr>
-<td><p>Gallery</p></td>
-<td align="middle" width="100%"><img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-06-23_11-39-47.jpg" width="240" height="426" alt="responsive"></td>
+<td><p>Search</p></td>
+<td align="middle" width="100%"><img src="https://github.com/razi409/Alta/blob/master/images/Alta%20pic%2002.jpg" width="240" height="426" alt="responsive"></td><td align="left" width="100%"><img src="https://github.com/razi409/Alta/blob/master/images/Alta%20pic%2003.jpg" width="240" height="426" alt="responsive"></td><td align="right" width="100%"><img src="https://github.com/razi409/Alta/blob/master/images/Alta%20pic%2004.jpg" width="240" height="426" alt="responsive"></td>
 </tr>
 
 <tr>
-<td ><p>Camera</p></td>
-<td align="middle" width="100%"><img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-06-23_11-39-40.jpg" width="240" height="426" alt="responsive"></td>
+<td ><p>Profile</p></td>
+<td align="middle" width="100%"><img src="https://github.com/razi409/Alta/blob/master/images/Alta%20pic%2005.jpg" width="240" height="426" alt="responsive"></td>
 </tr>
 
 <tr>
-<td ><p>Response</p></td>
-<td align="middle" width="100%"><img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-07-06_12-12-30.jpg" width="240" height="426" alt="responsive"></td>
+<td ><p>Student</p></td>
+<td align="middle" width="100%"><img src="https://github.com/razi409/Alta/blob/master/images/Alta%20pic%2006.jpg" width="240" height="426" alt="responsive"></td>
 </tr>
 
 <tr>
-<td ><p>Wiki page</p></td>
-<td align="middle" width="100%"><img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-06-23_11-39-22.jpg" width="240" height="426" alt="responsive"></td>
+<td ><p>Teacher</p></td>
+<td align="middle" width="100%"><img src="https://github.com/razi409/Alta/blob/master/images/Alta%20pic%2007.jpg" width="240" height="426" alt="responsive"></td>
 </tr>
 </tbody></table>
 

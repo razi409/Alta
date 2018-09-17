@@ -1,4 +1,4 @@
-<h1 align="middle"><img src="https://github.com/razi409/Alta/blob/master/images/logo.png?raw=true" height="94" height="71"></h1>
+<h1 align="middle"><img src="https://github.com/razi409/Alta/blob/master/images/logo.png?raw=true" height="94" width="71"></h1>
 
 <h1 align="middle"><a id="user-content-templates" class="anchor" href="#Objectives" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Welcome To Alta Schools</h2>
 <b><i>An interactive Android-based solution
@@ -106,19 +106,14 @@ Alta Schools project is takin advantage of. Also it is good to mention that the 
 Firebase API, which creates an easy base for communication and data transition.
 Alta Schools has two method of sign ups, one is through Google API, by choosing a Google account, and the other is through Facebook
 API by entering Facebook credentials by the End user.
-<h3>Why Alta?</h3>
-<img src="https://github.com/razi409/Alta/blob/master/images/logo.png?raw=true">
-
-
-
 
 <h3>Data Gathering</h3>
-<img src="https://github.com/razi409/Alta/blob/master/images/datamining.png?raw=true">
+<img src="https://github.com/razi409/Alta/blob/master/images/datamining.png?raw=true" height="300" width="300">
 
 In order to gather some teachers for our application, we decided to use a couple of techniques in data mining, by scraping 
 advertisment published by private teachers, we could gather a list of potentioal candidates for our Application.
 
-<h2><a id="user-content-templates" class="anchor" href="#why Alta Schools?" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Why the name of Minerva?</h2>
+<h2><a id="user-content-templates" class="anchor" href="#why Alta Schools?" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Why the name of Alta Schools?</h2>
 <table>
 <tbody>
 <tr>

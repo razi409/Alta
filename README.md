@@ -49,7 +49,7 @@ Development of an Android application which takes the camera mirror image, and r
 <tr>
 <td><a href="https://cloud.google.com/?utm_source=google&utm_medium=cpc&utm_campaign=2017-q1-cloud-emea-gcp-bkws-freetrial&gclid=Cj0KEQjwv_fKBRCG8a3ao-OQuZ8BEiQAvpHp6MPpBnrZg-kPmedyPw4o_k5WZXgR5C6CugyOm-nYLH8aAql38P8HAQ&dclid=CLDr48vU9dQCFeehUQodR7UHuQ">Server Side</a></td>
 <td width="100%"  align="middle" >
-<a href="" target="_blank"><img src="https://github.com/razi409/Alta/blob/master/images/logo-standard.png?raw=true" alt="responsive" height="91" height="74" style="max-width:100%"></a>
+<a href="" target="_blank"><img src="https://github.com/razi409/Alta/blob/master/images/Alta%20pic%2001.jpg" alt="responsive" height="91" height="74" style="max-width:100%"></a>
 <p>We used Google Cloud Platform as the backbone of Alta, Specifically we use Firebase</p>
 </td>
 </tr>

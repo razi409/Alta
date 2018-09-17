@@ -124,7 +124,7 @@ advertisment published by private teachers, we could gather a list of potentioal
 <tbody>
 <tr>
 <td>
-Minerva was the Roman goddess of wisdom, knowledge & the sponsor of arts. Through her name we want to transmit to the user the feeling that our solution in development is the right choice for letting him/her know quickly about whichever cultural spot that he/she might find in Rome.
+Alta means "High" in Italian, just add "Schools" after Alta, got it?.
 </td>
 </tr>
 </tbody>

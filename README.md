@@ -74,25 +74,21 @@ Alta School Application is a platform to share these demands and needs so those 
 <tbody>
 <tr>
 <td><p>Main Page</p></td>
-<td align="middle" width="100%"><img src="https://github.com/razi409/Alta/blob/master/images/Alta%20pic%2001.jpg" width="240" height="426" alt="responsive"></td>
+<td align="middle" width="100%"><img src="https://github.com/razi409/Alta/blob/master/images/Alta%20pic%2001.jpg" width="240" height="426" alt="responsive">
+  <img src="https://github.com/razi409/Alta/blob/master/images/tprofile.png?raw=true" width="240" height="426" alt="responsive">
+  <img src="https://github.com/razi409/Alta/blob/master/images/teacherprfole.png?raw=true" width="240" height="426" alt="responsive"></td>
 </tr>
 
 <tr>
-<td><p>Search 1</p></td>
-<td align="middle" width="100%"><img src="https://github.com/razi409/Alta/blob/master/images/Alta%20pic%2002.jpg" width="240" height="426" alt="responsive"></td>
+<td><p>Search</p></td>
+<td align="middle" width="100%"><img src="https://github.com/razi409/Alta/blob/master/images/Alta%20pic%2002.jpg" width="240" height="426" alt="responsive">
+  <img src="https://github.com/razi409/Alta/blob/master/images/Alta%20pic%2003.jpg" width="240" height="426" alt="responsive"><img src="https://github.com/razi409/Alta/blob/master/images/Alta%20pic%2004.jpg" width="240" height="426" alt="responsive"></td>
 </tr>
 <tr>
-<td><p>Search 2</p></td>
-<td align="middle" width="100%"><img src="https://github.com/razi409/Alta/blob/master/images/Alta%20pic%2003.jpg" width="240" height="426" alt="responsive"></td>
-</tr>
-
-<tr>
-<td><p>Search 3</p></td>
-<td align="middle" width="100%"><img src="https://github.com/razi409/Alta/blob/master/images/Alta%20pic%2004.jpg" width="240" height="426" alt="responsive"></td>
-</tr>
 <tr>
 <td ><p>Profile</p></td>
-<td align="middle" width="100%"><img src="https://github.com/razi409/Alta/blob/master/images/Alta%20pic%2005.jpg" width="240" height="426" alt="responsive"></td>
+<td align="middle" width="100%"><img src="https://github.com/razi409/Alta/blob/master/images/Alta%20pic%2005.jpg" width="240" height="426" alt="responsive">
+ </td>
 </tr>
 
 <tr>
